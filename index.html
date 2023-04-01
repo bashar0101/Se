@@ -20,7 +20,7 @@
     <h1>الجرد</h1>
     <div>
       <ul>
-        <li>اصابع فستق<button>+</button><button>-</button> <label for="t25" id="t1">0</li>
+        <li>اصابع فستق<button onclick="incrment('t1')">+</button><button>-</button> <label for="t25" id="t1">0</li>
 
         <li>اصابع كاجو<button>+</button><button>-</button> <label for="t26" id="t2">0</li>
 
@@ -107,5 +107,14 @@
         </li>
       </ul>
     </div>
-  </body>
+    <script>
+        function incrment(id){
+            var c = document.getElementById(id);
+            const handleIncrement = () => {
+                count++;
+                c.innerHTML = count;
+            };
+        }
+    </script>
+</body>
 </html>
