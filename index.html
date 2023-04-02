@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Senyora Tatlıları</title>
-    <style>
+    <!-- <style>
       ul {
         list-style: none;
         padding-left: 40px;
@@ -13,11 +13,24 @@
       li {
         font-size: 20px;
         margin-left: 20px;
-      }
+      } -->
     </style>
   </head>
   <body>
-    <h1>الجرد</h1>
+    <p>Counter</p>
+    <div>
+      <button>Click Me</button>
+      <label for="" id = "b"></label>
+    </div>
+    <script>
+      const incrment =()=>{
+        c = document.getElementById("b")
+        var number = c.innerHTML;
+        number++;
+        c.innerHTML= number;
+      };
+    </script>
+    <!-- <h1>الجرد</h1>
     <div>
       <ul>
         <li>اصابع فستق<button onclick="incrment('t1')">+</button><button>-</button> <label for="t25" id="t1">0</li>
@@ -114,6 +127,6 @@
             count++;
             c.innerHTML = count;
         }
-    </script>
+    </script> -->
 </body>
 </html>
