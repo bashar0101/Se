@@ -75,49 +75,49 @@
           مبرومة <button onclick="incrment('t14')">+</button> <button onclick="decrment('t14')">-</button><label for="t12" id="t14">0</label>
         </li>
         <li>
-          عصملية <button onclick="incrment('t15')">+</button> <button onclick="decrment('t15')">-</button><label for="t13" id="t15">0</label>
+          عصملية <button onclick="incrment('t15')">+</button> <button onclick="decrment('t15')">-</button><label id="t15">0</label>
         </li>
         <li>
-          بلورية <button onclick="incrment('t16')">+</button> <button onclick="decrment('t16')">-</button><label for="t14" id="t16">0</label>
+          بلورية <button onclick="incrment('t16')">+</button> <button onclick="decrment('t16')">-</button><label id="t16">0</label>
         </li>
         <li>
           شعبيات قشطة <button onclick="incrment('t17')">+</button> <button onclick="decrment('t17')">-</button
-          ><label for="t15" id="t17">0</label>
+          ><label id="t17">0</label>
         </li>
         <li>
           شعبيات جوز <button onclick="incrment('t18')">+</button> <button onclick="decrment('t18')">-</button
-          ><label for="t16" id="t18">0</label>
+          ><label id="t18">0</label>
         </li>
         <li>
           هريسة باشا <button onclick="incrment('t19')">+</button> <button onclick="decrment('t19')">-</button
-          ><label for="t17" id="t19">0</label>
+          ><label id="t19">0</label>
         </li>
         <li>
           هريسة مكسرات <button onclick="incrment('t20')">+</button> <button onclick="decrment('t20')">-</button
-          ><label for="t18" id="20">0</label>
+          ><label id="t20">0</label>
         </li>
         <li>
           هريسة لوزة <button onclick="incrment('t21')">+</button> <button onclick="decrment('t21')">-</button
-          ><label for="t19" id="21">0</label>
+          ><label id="t21">0</label>
         </li>
         <li>
           هريسة سمسم <button onclick="incrment('t22')">+</button> <button onclick="decrment('t22')">-</button
-          ><label for="t20" id="22">0</label>
+          ><label id="t22">0</label>
         </li>
         <li>
-          وربات <button onclick="incrment('t23')">+</button> <button onclick="decrment('t23')">-</button><label for="t21" id="23">0</label>
+          وربات <button onclick="incrment('t23')">+</button> <button onclick="decrment('t23')">-</button><label id="t23">0</label>
         </li>
         <li>
           هريسة جوز <button onclick="incrment('t24')">+</button> <button onclick="decrment('t24')">-</button
-          ><label for="t22" id="24">0</label>
+          ><label id="t24">0</label>
         </li>
         <li>
           هريسة شكولا <button onclick="incrment('t25')">+</button> <button onclick="decrment('t25')">-</button
-          ><label for="t23" id="25">0</label>
+          ><labelid="t25">0</labelid=>
         </li>
         <li>
           بقلاوة جوز <button onclick="incrment('t26')">+</button> <button onclick="decrment('t26')">-</button
-          ><label for="t24" id="26">0</label>
+          ><label  id="t26">0</label>
         </li>
       </ul>
     </div>
@@ -234,18 +234,22 @@
       const incrment =(id1 , id2)=>{
         c = document.getElementById(id1)
         d = document.getElementById(id2)
-        var number = c.innerHTML;
+        var number1 = c.innerHTML;
+        var number2 = d.innerHTML;
         number++;
-        c.innerHTML= number;
-        d.innerHTML = number;
+        number2++;
+        c.innerHTML= number1;
+        d.innerHTML = number2;
       };
       const decrment =(id1 ,id2)=>{
         c = document.getElementById(id1)
         d = document.getElementById(id2)
-        var number = c.innerHTML;
+        var number1 = c.innerHTML;
+        var number2 = d.innerHTML;
         number--;
-        c.innerHTML= number;
-        d.innerHTML = number;
+        number2--;
+        c.innerHTML= number1;
+        d.innerHTML = number2;
       };
     </script>
 </body> 
