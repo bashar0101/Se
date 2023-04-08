@@ -28,95 +28,112 @@
         margin-left: 10px;
         margin-right: 10px;
       }
+      table{
+        margin-left: 80px;
+        border: 1px solid black; 
+      }
+      th{
+        border: 1px solid black;
+      }
+      .th1{
+        width: 40%;
+      }
+      .th2{
+        width: 20%;
+        background-color: aliceblue;
+      }
+      ul{
+        text-align: left;
+      }
     </style>
   </head>
   <body>
  <h1>الجرد</h1>
     <div id = 'sec1'>
       <ul>
-        <li>اصابع فستق<button onclick="incrment('t1')">+</button><button onclick="decrment('t1')">-</button> <label for="t25" id="t1">0</li>
+        <li>اصابع فستق<button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</li>
 
-        <li>اصابع كاجو<button onclick="incrment('t2')">+</button><button onclick="decrment('t2')">-</button> <label for="t26" id="t2">0</li>
+        <li>اصابع كاجو<button onclick="incrment('t2', 's2')">+</button><button onclick="decrment('t2', 's2')">-</button> <label for="t26" id="t2">0</li>
 
         <li>
-          سكاير <button onclick="incrment('t3')">+</button> <button onclick="decrment('t3')">-</button> <label for="t1" id="t3">0</label>
+          سكاير <button onclick="incrment('t3', 's3')">+</button><button onclick="decrment('t3', 's3')">-</button> <label for="t1" id="t3">0</label>
         </li>
         <li>
-          سوار <button onclick="incrment('t4')">+</button> <button onclick="decrment('t4')">-</button><label id="t4">0</label>
+          سوار <button onclick="incrment('t4', 's4')">+</button><button onclick="decrment('t4', 's4')">-</button><label id="t4">0</label>
         </li>
         <li>
-          بقج <button onclick="incrment('t5')">+</button> <button onclick="decrment('t5')">-</button><label id="t5">0</label>
+          بقج <button onclick="incrment('t5', 's5')">+</button><button onclick="decrment('t5', 's5')">-</button><label id="t5">0</label>
         </li>
         <li>
-          عش فستق <button onclick="incrment('t6')">+</button> <button onclick="decrment('t6')">-</button><label id="t6">0</label>
+          عش فستق <button onclick="incrment('t6', 's6')">+</button> <button onclick="decrment('t6', 's6')">-</button><label id="t6">0</label>
         </li>
         <li>
-          عش مشكل <button onclick="incrment('t7')">+</button> <button onclick="decrment('t7')">-</button><label  id="t7">0</label>
+          عش مشكل <button onclick="incrment('t7', 's7')">+</button> <button onclick="decrment('t7', 's7')">-</button><label  id="t7">0</label>
         </li>
         <li>
-          يبرقة <button onclick="incrment('t8')">+</button> <button onclick="decrment('t8')">-</button><label  id="t8">0</label>
+          يبرقة <button onclick="incrment('t8', 's8')">+</button> <button onclick="decrment('t8', 's8')">-</button><label  id="t8">0</label>
         </li>
         <li>
-          لسان <button onclick="incrment('t9')">+</button> <button onclick="decrment('t9')">-</button><label id="t9">0</label>
+          لسان <button onclick="incrment('t9', 's9')">+</button> <button onclick="decrment('t9', 's9')">-</button><label id="t9">0</label>
         </li>
         <li>
-          لقمة <button onclick="incrment('t10')">+</button> <button onclick="decrment('t10')">-</button><label id="t10">0</label>
+          لقمة <button onclick="incrment('t10', 's10')">+</button> <button onclick="decrment('t10', 's10')">-</button><label id="t10">0</label>
         </li>
         <li>
-          لوزينا <button onclick="incrment('t11')">+</button> <button onclick="decrment('t11')">-</button><label for="t9" id="t11">0</label>
+          لوزينا <button onclick="incrment('t11', 's11')">+</button> <button onclick="decrment('t11', 's11')">-</button><label for="t9" id="t11">0</label>
         </li>
         <li>
-          تمرية <button onclick="incrment('t12')">+</button> <button onclick="decrment('t12')">-</button><label for="t10" id="t12">0</label>
+          تمرية <button onclick="incrment('t12', 's12')">+</button> <button onclick="decrment('t12', 's12')">-</button><label for="t10" id="t12">0</label>
         </li>
         <li>
-          بقلاوة <button onclick="incrment('t13')"> +</button> <button onclick="decrment('t13')">-</button><label for="t11" id="t13">0</label>
+          بقلاوة <button onclick="incrment('t13', 's13')"> +</button> <button onclick="decrment('t13', 's13')">-</button><label for="t11" id="t13">0</label>
         </li>
         <li>
-          مبرومة <button onclick="incrment('t14')">+</button> <button onclick="decrment('t14')">-</button><label for="t12" id="t14">0</label>
+          مبرومة <button onclick="incrment('t14', 's14')">+</button> <button onclick="decrment('t14', 's14')">-</button><label for="t12" id="t14">0</label>
         </li>
         <li>
-          عصملية <button onclick="incrment('t15')">+</button> <button onclick="decrment('t15')">-</button><label id="t15">0</label>
+          عصملية <button onclick="incrment('t15', 's15')">+</button> <button onclick="decrment('t15', 's15')">-</button><label id="t15">0</label>
         </li>
         <li>
-          بلورية <button onclick="incrment('t16')">+</button> <button onclick="decrment('t16')">-</button><label id="t16">0</label>
+          بلورية <button onclick="incrment('t16', 's16')">+</button> <button onclick="decrment('t16', 's16')">-</button><label id="t16">0</label>
         </li>
         <li>
-          شعبيات قشطة <button onclick="incrment('t17')">+</button> <button onclick="decrment('t17')">-</button
+          شعبيات قشطة <button onclick="incrment('t17', 's17')">+</button> <button onclick="decrment('t17', 's17')">-</button
           ><label id="t17">0</label>
         </li>
         <li>
-          شعبيات جوز <button onclick="incrment('t18')">+</button> <button onclick="decrment('t18')">-</button
+          شعبيات جوز <button onclick="incrment('t18', 's18')">+</button> <button onclick="decrment('t18', 's18')">-</button
           ><label id="t18">0</label>
         </li>
         <li>
-          هريسة باشا <button onclick="incrment('t19')">+</button> <button onclick="decrment('t19')">-</button
+          هريسة باشا <button onclick="incrment('t19', 's19')">+</button> <button onclick="decrment('t19', 's19')">-</button
           ><label id="t19">0</label>
         </li>
         <li>
-          هريسة مكسرات <button onclick="incrment('t20')">+</button> <button onclick="decrment('t20')">-</button
+          هريسة مكسرات <button onclick="incrment('t20', 's20')">+</button> <button onclick="decrment('t20', 's20')">-</button
           ><label id="t20">0</label>
         </li>
         <li>
-          هريسة لوزة <button onclick="incrment('t21')">+</button> <button onclick="decrment('t21')">-</button
+          هريسة لوزة <button onclick="incrment('t21', 's21')">+</button> <button onclick="decrment('t21', 's21')">-</button
           ><label id="t21">0</label>
         </li>
         <li>
-          هريسة سمسم <button onclick="incrment('t22')">+</button> <button onclick="decrment('t22')">-</button
+          هريسة سمسم <button onclick="incrment('t22', 's22')">+</button> <button onclick="decrment('t22', 's22')">-</button
           ><label id="t22">0</label>
         </li>
         <li>
-          وربات <button onclick="incrment('t23')">+</button> <button onclick="decrment('t23')">-</button><label id="t23">0</label>
+          وربات <button onclick="incrment('t23', 's23')">+</button> <button onclick="decrment('t23', 's23')">-</button><label id="t23">0</label>
         </li>
         <li>
-          هريسة جوز <button onclick="incrment('t24')">+</button> <button onclick="decrment('t24')">-</button
+          هريسة جوز <button onclick="incrment('t24', 's24')">+</button> <button onclick="decrment('t24', 's24')">-</button
           ><label id="t24">0</label>
         </li>
         <li>
-          هريسة شكولا <button onclick="incrment('t25')">+</button> <button onclick="decrment('t25')">-</button
-          ><labelid="t25">0</labelid=>
+          هريسة شكولا <button onclick="incrment('t25', 's25')">+</button> <button onclick="decrment('t25', 's25')">-</button
+          ><label id="t25">0</label>
         </li>
         <li>
-          بقلاوة جوز <button onclick="incrment('t26')">+</button> <button onclick="decrment('t26')">-</button
+          بقلاوة جوز <button onclick="incrment('t26', 's26')">+</button> <button onclick="decrment('t26', 's26')">-</button
           ><label  id="t26">0</label>
         </li>
       </ul>
@@ -124,131 +141,132 @@
     <div id = 'sec2'>
       <table>
         <tr>
-          <th>اصابع فستق</th>
-          <th ><label id = 's1'>0</label></th>
+          <th>الصنف</th>
+          <th>العدد</th>
         </tr>
         <tr>
-          <th>اصابع كاجو </th>
-          <th id = 's2'>0</th>
+          <th class = 'th1'>اصابع فستق</th>
+          <th id = 's1' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th> سكاير </th>
-          <th id = 's3'>0</th>
+          <th class = 'th1'>اصابع كاجو </th>
+          <th id = 's2' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th> سوار</th>
-          <th id = 's4'>0</th>
+          <th class = 'th1'>  سكاير </th>
+          <th id = 's3' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>بقج</th>
-          <th id = 's5'>0</th>
+          <th class = 'th1'> سوار</th>
+          <th id = 's4' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>عش فستق </th>
-          <th id = 's6'>0</th>
+          <th class = 'th1'>بقج</th>
+          <th id = 's5' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>عش مشكل</th>
-          <th id = 's7'>0</th>
+          <th class = 'th1'>عش فستق </th>
+          <th id = 's6' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>يبرقة </th>
-          <th id = 's8'>0</th>
+          <th class = 'th1'>عش مشكل</th>
+          <th id = 's7' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>لسان </th>
-          <th id = 's9'>0</th>
+          <th class = 'th1'>يبرقة </th>
+          <th id = 's8' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>لقمة</th>
-          <th id = 's10'>0</th>
+          <th class = 'th1'>لسان </th>
+          <th id = 's9' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>لوزينا </th>
-          <th id = 's11'>0</th>
+          <th class = 'th1'>لقمة</th>
+          <th id = 's10' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th> تمرية </th>
-          <th id = 's12'>0</th>
+          <th class = 'th1'>لوزينا </th>
+          <th id = 's11' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>بقلاوة</th>
-          <th id = 's13'>0</th>
+          <th class = 'th1'> تمرية </th>
+          <th id = 's12' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>مبرومة</th>
-          <th id = 's14'>0</th>
+          <th class = 'th1'>بقلاوة</th>
+          <th id = 's13' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>عصملية</th>
-          <th id = 's15'>0</th>
+          <th class = 'th1'>مبرومة</th>
+          <th id = 's14' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>بلورية</th>
-          <th id = 's16'>0</th>
+          <th class = 'th1'>عصملية</th>
+          <th id = 's15' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>شعبيات قشطة</th>
-          <th id = 's17'>0</th>
+          <th class = 'th1'>بلورية</th>
+          <th id = 's16' class = 'th2' >0</th>
         </tr>
         <tr>
-          <th> شعبيات جوز</th>
-          <th id = 's18'>0</th>
+          <th class = 'th1'>شعبيات قشطة</th>
+          <th id = 's17' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>هريسة باشا</th>
-          <th id = 's19'>0</th>
+          <th class = 'th1'> شعبيات جوز</th>
+          <th id = 's18' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th> هريسة مكسرات </th>
-          <th id = 's20'>0</th>
+          <th class = 'th1'>هريسة باشا</th>
+          <th id = 's19' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th> هريسة لوزة</th>
-          <th id = 's21'>0</th>
+          <th class = 'th1'> هريسة مكسرات </th>
+          <th id = 's20' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>هريسة سمسم </th>
-          <th id = 's22'>0</th>
+          <th class = 'th1'> هريسة لوزة</th>
+          <th id = 's21' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>وربات</th>
-          <th id = 's23'>0</th>
+          <th class = 'th1'>هريسة سمسم </th>
+          <th id = 's22' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>هريسة جوز </th>
-          <th id = 's24'>0</th>
+          <th class = 'th1'>وربات</th>
+          <th id = 's23' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>هريسة شكولا</th>
-          <th id = 's25'>0</th>
+          <th class = 'th1'>هريسة جوز </th>
+          <th id = 's24' class = 'th2'>0</th>
         </tr>
         <tr>
-          <th>بقلاوة جوز</th>
-          <th id = 's26'>0</th>
+          <th class = 'th1'>هريسة شكولا</th>
+          <th id = 's25' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>بقلاوة جوز</th>
+          <th id = 's26' class = 'th2'>0</th>
         </tr>
       </table>
 
     </div>
     <script>
       const incrment =(id1 , id2)=>{
-        c = document.getElementById(id1)
-        d = document.getElementById(id2)
-        var number = c.innerHTML;
+        a = document.getElementById(id1)
+        b = document.getElementById(id2)
+        var number = a.innerHTML;
         number++;
-        c.innerHTML= number;
-        d.innerHTML = number;
-        console.log(typeof d);
-        console.log(typeof c);
-        console.log(d);
+        a.innerHTML= number;
+        b.innerHTML = number;
       };
       const decrment =(id1 ,id2)=>{
-        c = document.getElementById(id1)
-        d = document.getElementById(id2)
-        var number = c.innerHTML;
+        a = document.getElementById(id1)
+        b = document.getElementById(id2)
+        var number = a.innerHTML;
         number--;
-        c.innerHTML= number;
-        d.innerHTML = number;
+        a.innerHTML= number;
+        b.innerHTML = number;
       };
     </script>
 </body> 
