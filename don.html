@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dondurma</title>
+    <style>
+        tr{
+          text-align: center;
+        }
+        #sec1{
+          padding-left: 30px;
+          margin-left: 30px;
+          text-align: center;
+        }
+        ul {
+          list-style: none;
+          padding-left: 40px;
+        }
+        li {
+          font-size: 20px;
+          margin-left: 20px;
+          margin-right: 20px;
+  
+        }
+        button {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+        table{
+          font-size: 10px;
+          margin-left: 120px;
+          border: 1px solid black; 
+        }
+        th{
+          border: 1px solid black;
+        }
+        .th1{
+          width: 40%;
+        }
+        .th2{
+          width: 20%;
+          background-color: aliceblue;
+        }
+        ul{
+          text-align: left;
+        }
+      </style>
+  </head>
+  <body>
+    <h1 style="margin-left: 150px;">الجرد</h1>
+    <div id = 'sec1'>
+      <ul>
+        <li>قشطة <button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</li>
+        <li>كرز<button onclick="incrment('t2', 's2')">+</button><button onclick="decrment('t2', 's2')">-</button> <label for="t26" id="t2">0</li>
+        <li>سلوى <button onclick="incrment('t3', 's3')">+</button><button onclick="decrment('t3', 's3')">-</button> <label for="t1" id="t3">0</label>
+        </li>
+        <li>توكس <button onclick="incrment('t4', 's4')">+</button><button onclick="decrment('t4', 's4')">-</button><label id="t4">0</label>
+        </li>
+        <li>اوريو <button onclick="incrment('t5', 's5')">+</button><button onclick="decrment('t5', 's5')">-</button><label id="t5">0</label>
+        </li>
+        <li>ليمون <button onclick="incrment('t6', 's6')">+</button> <button onclick="decrment('t6', 's6')">-</button><label id="t6">0</label>
+        </li>
+        <li>توت <button onclick="incrment('t7', 's7')">+</button> <button onclick="decrment('t7', 's7')">-</button><label  id="t7">0</label>
+        </li>
+        <li>فريز<button onclick="incrment('t8', 's8')">+</button> <button onclick="decrment('t8', 's8')">-</button><label  id="t8">0</label>
+        </li>
+        <li>شكولا<button onclick="incrment('t9', 's9')">+</button> <button onclick="decrment('t9', 's9')">-</button><label id="t9">0</label>
+        </li>
+        <li>لوز<button onclick="incrment('t10', 's10')">+</button> <button onclick="decrment('t10', 's10')">-</button><label id="t10">0</label>
+        </li>
+        <li>فستق<button onclick="incrment('t11', 's11')">+</button> <button onclick="decrment('t11', 's11')">-</button><label for="t9" id="t11">0</label>
+        </li>
+      </ul>
+    </div>
+    <div id = 'sec2'>
+      <table>
+        <tr>
+          <th>الصنف</th>
+          <th>العدد</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>قشطة</th>
+          <th id = 's1' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>كرز </th>
+          <th id = 's2' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>سلوى </th>
+          <th id = 's3' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>توكس</th>
+          <th id = 's4' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>اوريو</th>
+          <th id = 's5' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>ليمون </th>
+          <th id = 's6' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>توت</th>
+          <th id = 's7' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>فريز </th>
+          <th id = 's8' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>شكولا </th>
+          <th id = 's9' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>لوز</th>
+          <th id = 's10' class = 'th2'>0</th>
+        </tr>
+        <tr>
+          <th class = 'th1'>فستق </th>
+      </table>
+      
+    <script>
+        const incrment =(id1 , id2)=>{
+          a = document.getElementById(id1)
+          b = document.getElementById(id2)
+          var number = a.innerHTML;
+          number++;
+          a.innerHTML= number;
+          b.innerHTML = number;
+        };
+        const decrment =(id1 ,id2)=>{
+          a = document.getElementById(id1)
+          b = document.getElementById(id2)
+          var number = a.innerHTML;
+          number--;
+          a.innerHTML= number;
+          b.innerHTML = number;
+        };
+      </script>
+  </body>
+</html>
