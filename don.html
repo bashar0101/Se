@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dondurma</title>
     <style>
+        .sss{
+          padding-left: 70px;
+          margin-left: 70px;
+          text-align: center;
+        }
+        .ss{
+          padding-left: 9px;
+          margin-left: 9px;
+          text-align: center;
+        }
         tr{
           text-align: center;
         }
@@ -131,13 +141,17 @@
           <th id = 's12' class = 'th2'>0</th>
         </tr>
       </table>
-      <div>
-        
-      </div>
+      <dl></dl>
+      <label class = "ss">المجموح</label>
+      <label class = "sss"  id="count">0</label>
       <script>
         const incrment =(id1 , id2)=>{
           a = document.getElementById(id1)
           b = document.getElementById(id2)
+          count = document.getElementById("count")
+          var count2 = count.innerHTML;
+          count.innerHTML = ++count2;
+
           var number = a.innerHTML;
           number++;
           a.innerHTML= number;
@@ -146,6 +160,9 @@
         const decrment =(id1 ,id2)=>{
           a = document.getElementById(id1)
           b = document.getElementById(id2)
+          count = document.getElementById("count")
+          var count2 = count.innerHTML;
+          count.innerHTML = --count2;
           var number = a.innerHTML;
           number--;
           a.innerHTML= number;
