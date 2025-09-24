@@ -5,11 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Senyora Tatlıları</title>
+    <!-- React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX support -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
-      tr{
+      tr {
         text-align: center;
       }
-      #sec1{
+      #sec1 {
         padding-left: 30px;
         margin-left: 30px;
         text-align: center;
@@ -17,290 +22,119 @@
       ul {
         list-style: none;
         padding-left: 40px;
+        text-align: left;
       }
       li {
         font-size: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-
+        margin: 10px 20px;
       }
       button {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0 10px;
       }
-      table{
-        font-size: 10px;
+      table {
+        font-size: 12px;
         margin-left: 120px;
-        border: 1px solid black; 
-      }
-      th{
         border: 1px solid black;
       }
-      .th1{
+      th {
+        border: 1px solid black;
+      }
+      .th1 {
         width: 40%;
       }
-      .th2{
+      .th2 {
         width: 20%;
         background-color: aliceblue;
-      }
-      ul{
-        text-align: left;
       }
     </style>
   </head>
   <body>
- <h1 style="margin-left: 150px;">الجرد</h1>
-    <div id = 'sec1'>
-      <ul>
-        <li>اصابع فستق<button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</li>
+    <h1 style="margin-left: 150px;">الجرد</h1>
+    <div id="root"></div>
 
-        <li>اصابع كاجو<button onclick="incrment('t2', 's2')">+</button><button onclick="decrment('t2', 's2')">-</button> <label for="t26" id="t2">0</li>
+    <script type="text/babel">
+      function App() {
+        const items = [
+          "اصابع فستق", "اصابع كاجو", "سكاير", "سوار", "بقج", "عش فستق", "عش مشكل", "يبرقة", 
+          "لسان", "لقمة", "لوزينا", "تمرية", "بقلاوة", "مبرومة", "عصملية", "بلورية", 
+          "شعبيات قشطة", "شعبيات جوز", "هريسة باشا", "هريسة مكسرات", "هريسة لوزة", 
+          "هريسة سمسم", "وربات", "هريسة جوز", "هريسة شكولا", "بقلاوة جوز", "كول و شكور", 
+          "فصليات", "ناب الجمل"
+        ];
 
-        <li>
-          سكاير <button onclick="incrment('t3', 's3')">+</button><button onclick="decrment('t3', 's3')">-</button> <label for="t1" id="t3">0</label>
-        </li>
-        <li>
-          سوار <button onclick="incrment('t4', 's4')">+</button><button onclick="decrment('t4', 's4')">-</button><label id="t4">0</label>
-        </li>
-        <li>
-          بقج <button onclick="incrment('t5', 's5')">+</button><button onclick="decrment('t5', 's5')">-</button><label id="t5">0</label>
-        </li>
-        <li>
-          عش فستق <button onclick="incrment('t6', 's6')">+</button> <button onclick="decrment('t6', 's6')">-</button><label id="t6">0</label>
-        </li>
-        <li>
-          عش مشكل <button onclick="incrment('t7', 's7')">+</button> <button onclick="decrment('t7', 's7')">-</button><label  id="t7">0</label>
-        </li>
-        <li>
-          يبرقة <button onclick="incrment('t8', 's8')">+</button> <button onclick="decrment('t8', 's8')">-</button><label  id="t8">0</label>
-        </li>
-        <li>
-          لسان <button onclick="incrment('t9', 's9')">+</button> <button onclick="decrment('t9', 's9')">-</button><label id="t9">0</label>
-        </li>
-        <li>
-          لقمة <button onclick="incrment('t10', 's10')">+</button> <button onclick="decrment('t10', 's10')">-</button><label id="t10">0</label>
-        </li>
-        <li>
-          لوزينا <button onclick="incrment('t11', 's11')">+</button> <button onclick="decrment('t11', 's11')">-</button><label for="t9" id="t11">0</label>
-        </li>
-        <li>
-          تمرية <button onclick="incrment('t12', 's12')">+</button> <button onclick="decrment('t12', 's12')">-</button><label for="t10" id="t12">0</label>
-        </li>
-        <li>
-          بقلاوة <button onclick="incrment('t13', 's13')"> +</button> <button onclick="decrment('t13', 's13')">-</button><label for="t11" id="t13">0</label>
-        </li>
-        <li>
-          مبرومة <button onclick="incrment('t14', 's14')">+</button> <button onclick="decrment('t14', 's14')">-</button><label for="t12" id="t14">0</label>
-        </li>
-        <li>
-          عصملية <button onclick="incrment('t15', 's15')">+</button> <button onclick="decrment('t15', 's15')">-</button><label id="t15">0</label>
-        </li>
-        <li>
-          بلورية <button onclick="incrment('t16', 's16')">+</button> <button onclick="decrment('t16', 's16')">-</button><label id="t16">0</label>
-        </li>
-        <li>
-          شعبيات قشطة <button onclick="incrment('t17', 's17')">+</button> <button onclick="decrment('t17', 's17')">-</button
-          ><label id="t17">0</label>
-        </li>
-        <li>
-          شعبيات جوز <button onclick="incrment('t18', 's18')">+</button> <button onclick="decrment('t18', 's18')">-</button
-          ><label id="t18">0</label>
-        </li>
-        <li>
-          هريسة باشا <button onclick="incrment('t19', 's19')">+</button> <button onclick="decrment('t19', 's19')">-</button
-          ><label id="t19">0</label>
-        </li>
-        <li>
-          هريسة مكسرات <button onclick="incrment('t20', 's20')">+</button> <button onclick="decrment('t20', 's20')">-</button
-          ><label id="t20">0</label>
-        </li>
-        <li>
-          هريسة لوزة <button onclick="incrment('t21', 's21')">+</button> <button onclick="decrment('t21', 's21')">-</button
-          ><label id="t21">0</label>
-        </li>
-        <li>
-          هريسة سمسم <button onclick="incrment('t22', 's22')">+</button> <button onclick="decrment('t22', 's22')">-</button
-          ><label id="t22">0</label>
-        </li>
-        <li>
-          وربات <button onclick="incrment('t23', 's23')">+</button> <button onclick="decrment('t23', 's23')">-</button><label id="t23">0</label>
-        </li>
-        <li>
-          هريسة جوز <button onclick="incrment('t24', 's24')">+</button> <button onclick="decrment('t24', 's24')">-</button
-          ><label id="t24">0</label>
-        </li>
-        <li>
-          هريسة شكولا <button onclick="incrment('t25', 's25')">+</button> <button onclick="decrment('t25', 's25')">-</button
-          ><label id="t25">0</label>
-        </li>
-        <li>
-          بقلاوة جوز <button onclick="incrment('t26', 's26')">+</button> <button onclick="decrment('t26', 's26')">-</button
-          ><label  id="t26">0</label>
-        </li>
-        <li>
-          كول و شكور <button onclick="incrment('t27', 's27')">+</button> <button onclick="decrment('t27', 's27')">-</button
-          ><label  id="t27">0</label>
-        </li>        <li>
-          فصليات <button onclick="incrment('t28', 's28')">+</button> <button onclick="decrment('t28', 's28')">-</button
-          ><label  id="t28">0</label>
-        </li>        <li>
-          ناب الجمل <button onclick="incrment('t29', 's29')">+</button> <button onclick="decrment('t29', 's29')">-</button
-          ><label  id="t29">0</label>
-        </li>
-      </ul>
-    </div>
-    <div id = 'sec2'>
-      <table>
-        <tr>
-          <th>الصنف</th>
-          <th>العدد</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>اصابع فستق</th>
-          <th id = 's1' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>اصابع كاجو </th>
-          <th id = 's2' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>  سكاير </th>
-          <th id = 's3' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> سوار</th>
-          <th id = 's4' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقج</th>
-          <th id = 's5' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عش فستق </th>
-          <th id = 's6' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عش مشكل</th>
-          <th id = 's7' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>يبرقة </th>
-          <th id = 's8' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لسان </th>
-          <th id = 's9' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لقمة</th>
-          <th id = 's10' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لوزينا </th>
-          <th id = 's11' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> تمرية </th>
-          <th id = 's12' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقلاوة</th>
-          <th id = 's13' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>مبرومة</th>
-          <th id = 's14' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عصملية</th>
-          <th id = 's15' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بلورية</th>
-          <th id = 's16' class = 'th2' >0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>شعبيات قشطة</th>
-          <th id = 's17' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> شعبيات جوز</th>
-          <th id = 's18' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة باشا</th>
-          <th id = 's19' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> هريسة مكسرات </th>
-          <th id = 's20' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> هريسة لوزة</th>
-          <th id = 's21' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة سمسم </th>
-          <th id = 's22' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>وربات</th>
-          <th id = 's23' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة جوز </th>
-          <th id = 's24' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة شكولا</th>
-          <th id = 's25' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقلاوة جوز</th>
-          <th id = 's26' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>كول و شكور</th>
-          <th id = 's27' class = 'th2'>0</th>
-        </tr>        
-        <tr>
-          <th class = 'th1'>فصليات</th>
-          <th id = 's28' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>ناب الجمل</th>
-          <th id = 's29' class = 'th2'>0</th>
-        </tr>
-      </table>
-      <footer>
-        <div>
-          <p style="font-size: 8px; margin-left: 40px; margin-top: 80px;">@copyright[bashar khoujah]</p>
-        <a style="font-size: 12px;" href="">basharhas1999@gmail.com</a>
-        </div>
-        <div>
-          <a style="font-size: 12px;" href="https://github.com/bashar0101">https://github.com/bashar0101</a>
-        </div>
-        
+        const [counts, setCounts] = React.useState(Array(items.length).fill(0));
 
-      </footer>
-    </div>
-    <script>
-      const incrment =(id1 , id2)=>{
-        a = document.getElementById(id1)
-        b = document.getElementById(id2)
-        var number = a.innerHTML;
-        number++;
-        a.innerHTML= number;
-        b.innerHTML = number;
-      };
-      const decrment =(id1 ,id2)=>{
-        a = document.getElementById(id1)
-        b = document.getElementById(id2)
-        var number = a.innerHTML;
-        number--;
-        a.innerHTML= number;
-        b.innerHTML = number;
-      };
+        const increment = (index) => {
+          const newCounts = [...counts];
+          newCounts[index]++;
+          setCounts(newCounts);
+        };
+
+        const decrement = (index) => {
+          const newCounts = [...counts];
+          if (newCounts[index] > 0) {
+            newCounts[index]--;
+          }
+          setCounts(newCounts);
+        };
+
+        return (
+          <div>
+            {/* List with buttons */}
+            <div id="sec1">
+              <ul>
+                {items.map((item, index) => (
+                  <li key={index}>
+                    {item}
+                    <button onClick={() => increment(index)}>+</button>
+                    <button onClick={() => decrement(index)}>-</button>
+                    <span style={{ marginLeft: "10px" }}>{counts[index]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Table */}
+            <div id="sec2">
+              <table>
+                <thead>
+                  <tr>
+                    <th>الصنف</th>
+                    <th>العدد</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item, index) => (
+                    <tr key={index}>
+                      <th className="th1">{item}</th>
+                      <th className="th2">{counts[index]}</th>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <footer>
+                <div>
+                  <p style={{ fontSize: "8px", marginLeft: "40px", marginTop: "80px" }}>
+                    @copyright[bashar khoujah]
+                  </p>
+                  <a style={{ fontSize: "12px" }} href="mailto:basharhas1999@gmail.com">
+                    basharhas1999@gmail.com
+                  </a>
+                </div>
+                <div>
+                  <a style={{ fontSize: "12px" }} href="https://github.com/bashar0101">
+                    https://github.com/bashar0101
+                  </a>
+                </div>
+              </footer>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
     </script>
-</body> 
+  </body>
 </html>
