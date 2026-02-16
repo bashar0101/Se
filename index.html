@@ -1,310 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Senyora</title>
+    <title>Senyora - Inventory</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-      tr{
-        text-align: center;
+      :root {
+          --primary-color: #2196F3;
+          --secondary-color: #f5f5f5;
+          --text-color: #333;
+          --success-color: #4CAF50;
+          --danger-color: #F44336;
+          --warning-color: #FF9800;
       }
-      #sec1{
-        padding-left: 30px;
-        margin-left: 30px;
-        text-align: center;
-      }
-      ul {
-        list-style: none;
-        padding-left: 40px;
-      }
-      li {
-        font-size: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
 
+      body {
+          font-family: 'Cairo', sans-serif;
+          text-align: center;
+          background-color: #ffffff;
+          color: var(--text-color);
+          margin: 0;
+          padding: 20px;
+          direction: rtl;
       }
-      button {
-        margin-left: 10px;
-        margin-right: 10px;
+
+      h1 {
+          color: var(--primary-color);
+          margin-bottom: 20px;
+          font-weight: 700;
+          margin-left: 0 !important; /* Override inline style */
       }
-      table{
-        font-size: 10px;
-        margin-left: 120px;
-        border: 1px solid black; 
+
+      #container {
+          max-width: 900px;
+          margin: 0 auto;
+          background-color: white;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 0 20px rgba(0,0,0,0.05);
       }
-      th{
-        border: 1px solid black;
-      }
-      .th1{
-        width: 40%;
-      }
-      .th2{
-        width: 20%;
-        background-color: aliceblue;
-      }
-      ul{
-        text-align: left;
-      }
-      ul{
-        text-align: left;
-      }
+
+      /* Voice Link as a Button */
       .voice-link {
-        display: block;
-        text-align: center;
-        margin: 20px;
-        font-size: 18px;
-        text-decoration: none;
-        color: white;
-        background-color: #2196F3;
-        padding: 10px;
-        width: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 5px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin: 20px auto;
+          font-size: 18px;
+          text-decoration: none;
+          color: white;
+          background-color: var(--primary-color);
+          padding: 12px 30px;
+          border-radius: 50px;
+          box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+          transition: transform 0.2s, box-shadow 0.2s;
       }
+
       .voice-link:hover {
-        background-color: #0b7dda;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+          background-color: var(--primary-color);
+      }
+
+      /* Product List Styling */
+      #sec1 {
+          margin: 30px 0;
+          padding: 0;
+      }
+
+      ul {
+          list-style: none;
+          padding: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 15px;
+      }
+
+      li {
+          background-color: #fff;
+          border: 1px solid #eee;
+          border-radius: 10px;
+          padding: 15px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 16px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      }
+
+      li label {
+          font-weight: bold;
+          font-size: 18px;
+          min-width: 30px;
+          text-align: center;
+      }
+
+      /* Control Buttons */
+      button {
+          border: none;
+          border-radius: 5px;
+          width: 30px;
+          height: 30px;
+          cursor: pointer;
+          font-size: 18px;
+          line-height: 1;
+          margin: 0 5px;
+          color: white;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      button[onclick*="incrment"] {
+          background-color: var(--success-color);
+      }
+
+      button[onclick*="decrment"] {
+          background-color: var(--warning-color);
+      }
+
+      /* Table Styles */
+      #sec2 {
+          margin-top: 40px;
+          overflow-x: auto;
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 0;
+          background-color: white;
+          font-size: 16px;
+      }
+
+      th, td {
+          padding: 12px;
+          border: 1px solid #eee;
+          text-align: center;
+      }
+
+      thead th {
+          background-color: var(--primary-color);
+          color: white;
+          font-weight: 600;
+          border: none;
+      }
+
+      .th1 { text-align: right; padding-right: 20px; font-weight: bold; width: 60%; }
+      .th2 { background-color: #fafafa; font-weight: bold; color: var(--primary-color); }
+
+      /* Footer */
+      footer {
+          margin-top: 50px;
+          color: #777;
+          font-size: 12px;
+          border-top: 1px solid #eee;
+          padding-top: 20px;
+      }
+      
+      footer a {
+          color: var(--primary-color);
+          text-decoration: none;
       }
     </style>
   </head>
-  <body>
- <h1 style="margin-left: 150px;">الجرد</h1>
-    <a href="voice_recognition.html" class="voice-link">🎙️ الانتقال للجرد الصوتي</a>
-    <div id = 'sec1'>
-      <ul>
-        <li>اصابع فستق<button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</li>
-
-        <li>اصابع كاجو<button onclick="incrment('t2', 's2')">+</button><button onclick="decrment('t2', 's2')">-</button> <label for="t26" id="t2">0</li>
-
-        <li>
-          سكاير <button onclick="incrment('t3', 's3')">+</button><button onclick="decrment('t3', 's3')">-</button> <label for="t1" id="t3">0</label>
-        </li>
-        <li>
-          سوار <button onclick="incrment('t4', 's4')">+</button><button onclick="decrment('t4', 's4')">-</button><label id="t4">0</label>
-        </li>
-        <li>
-          بقج <button onclick="incrment('t5', 's5')">+</button><button onclick="decrment('t5', 's5')">-</button><label id="t5">0</label>
-        </li>
-        <li>
-          عش فستق <button onclick="incrment('t6', 's6')">+</button> <button onclick="decrment('t6', 's6')">-</button><label id="t6">0</label>
-        </li>
-        <li>
-          عش مشكل <button onclick="incrment('t7', 's7')">+</button> <button onclick="decrment('t7', 's7')">-</button><label  id="t7">0</label>
-        </li>
-        <li>
-          يبرقة <button onclick="incrment('t8', 's8')">+</button> <button onclick="decrment('t8', 's8')">-</button><label  id="t8">0</label>
-        </li>
-        <li>
-          لسان <button onclick="incrment('t9', 's9')">+</button> <button onclick="decrment('t9', 's9')">-</button><label id="t9">0</label>
-        </li>
-        <li>
-          لقمة <button onclick="incrment('t10', 's10')">+</button> <button onclick="decrment('t10', 's10')">-</button><label id="t10">0</label>
-        </li>
-        <li>
-          لوزينا <button onclick="incrment('t11', 's11')">+</button> <button onclick="decrment('t11', 's11')">-</button><label for="t9" id="t11">0</label>
-        </li>
-        <li>
-          تمرية <button onclick="incrment('t12', 's12')">+</button> <button onclick="decrment('t12', 's12')">-</button><label for="t10" id="t12">0</label>
-        </li>
-        <li>
-          بقلاوة <button onclick="incrment('t13', 's13')"> +</button> <button onclick="decrment('t13', 's13')">-</button><label for="t11" id="t13">0</label>
-        </li>
-        <li>
-          مبرومة <button onclick="incrment('t14', 's14')">+</button> <button onclick="decrment('t14', 's14')">-</button><label for="t12" id="t14">0</label>
-        </li>
-        <li>
-          عصملية <button onclick="incrment('t15', 's15')">+</button> <button onclick="decrment('t15', 's15')">-</button><label id="t15">0</label>
-        </li>
-        <li>
-          بلورية <button onclick="incrment('t16', 's16')">+</button> <button onclick="decrment('t16', 's16')">-</button><label id="t16">0</label>
-        </li>
-        <li>
-          شعبيات قشطة <button onclick="incrment('t17', 's17')">+</button> <button onclick="decrment('t17', 's17')">-</button
-          ><label id="t17">0</label>
-        </li>
-        <li>
-          شعبيات جوز <button onclick="incrment('t18', 's18')">+</button> <button onclick="decrment('t18', 's18')">-</button
-          ><label id="t18">0</label>
-        </li>
-        <li>
-          هريسة باشا <button onclick="incrment('t19', 's19')">+</button> <button onclick="decrment('t19', 's19')">-</button
-          ><label id="t19">0</label>
-        </li>
-        <li>
-          هريسة مكسرات <button onclick="incrment('t20', 's20')">+</button> <button onclick="decrment('t20', 's20')">-</button
-          ><label id="t20">0</label>
-        </li>
-        <li>
-          هريسة لوزة <button onclick="incrment('t21', 's21')">+</button> <button onclick="decrment('t21', 's21')">-</button
-          ><label id="t21">0</label>
-        </li>
-        <li>
-          هريسة سمسم <button onclick="incrment('t22', 's22')">+</button> <button onclick="decrment('t22', 's22')">-</button
-          ><label id="t22">0</label>
-        </li>
-        <li>
-          وربات <button onclick="incrment('t23', 's23')">+</button> <button onclick="decrment('t23', 's23')">-</button><label id="t23">0</label>
-        </li>
-        <li>
-          هريسة جوز <button onclick="incrment('t24', 's24')">+</button> <button onclick="decrment('t24', 's24')">-</button
-          ><label id="t24">0</label>
-        </li>
-        <li>
-          هريسة شكولا <button onclick="incrment('t25', 's25')">+</button> <button onclick="decrment('t25', 's25')">-</button
-          ><label id="t25">0</label>
-        </li>
-        <li>
-          بقلاوة جوز <button onclick="incrment('t26', 's26')">+</button> <button onclick="decrment('t26', 's26')">-</button
-          ><label  id="t26">0</label>
-        </li>
-        <li>
-          كول و شكور <button onclick="incrment('t27', 's27')">+</button> <button onclick="decrment('t27', 's27')">-</button
-          ><label  id="t27">0</label>
-        </li>        <li>
-          فصليات <button onclick="incrment('t28', 's28')">+</button> <button onclick="decrment('t28', 's28')">-</button
-          ><label  id="t28">0</label>
-        </li>        <li>
-          ناب الجمل <button onclick="incrment('t29', 's29')">+</button> <button onclick="decrment('t29', 's29')">-</button
-          ><label  id="t29">0</label>
-        </li>
-      </ul>
-    </div>
-    <div id = 'sec2'>
-      <table>
-        <tr>
-          <th>الصنف</th>
-          <th>العدد</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>اصابع فستق</th>
-          <th id = 's1' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>اصابع كاجو </th>
-          <th id = 's2' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>  سكاير </th>
-          <th id = 's3' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> سوار</th>
-          <th id = 's4' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقج</th>
-          <th id = 's5' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عش فستق </th>
-          <th id = 's6' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عش مشكل</th>
-          <th id = 's7' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>يبرقة </th>
-          <th id = 's8' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لسان </th>
-          <th id = 's9' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لقمة</th>
-          <th id = 's10' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>لوزينا </th>
-          <th id = 's11' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> تمرية </th>
-          <th id = 's12' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقلاوة</th>
-          <th id = 's13' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>مبرومة</th>
-          <th id = 's14' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>عصملية</th>
-          <th id = 's15' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بلورية</th>
-          <th id = 's16' class = 'th2' >0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>شعبيات قشطة</th>
-          <th id = 's17' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> شعبيات جوز</th>
-          <th id = 's18' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة باشا</th>
-          <th id = 's19' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> هريسة مكسرات </th>
-          <th id = 's20' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'> هريسة لوزة</th>
-          <th id = 's21' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة سمسم </th>
-          <th id = 's22' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>وربات</th>
-          <th id = 's23' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة جوز </th>
-          <th id = 's24' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>هريسة شكولا</th>
-          <th id = 's25' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>بقلاوة جوز</th>
-          <th id = 's26' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>كول و شكور</th>
-          <th id = 's27' class = 'th2'>0</th>
-        </tr>        
-        <tr>
-          <th class = 'th1'>فصليات</th>
-          <th id = 's28' class = 'th2'>0</th>
-        </tr>
-        <tr>
-          <th class = 'th1'>ناب الجمل</th>
-          <th id = 's29' class = 'th2'>0</th>
-        </tr>
-      </table>
-
-      <footer>
-        <div>
-          <p style="font-size: 8px; margin-left: 40px; margin-top: 80px;">@copyright[bashar khoujah]</p>
-        <a style="font-size: 12px;" href="">basharhas1999@gmail.com</a>
-        </div>
-        <div>
-          <a style="font-size: 12px;" href="https://github.com/bashar0101">https://github.com/bashar0101</a>
-        </div>
+<body>
+    <div id="container">
+        <h1>الجرد</h1>
+        <a href="voice_recognition.html" class="voice-link">🎙️ الانتقال للجرد الصوتي</a>
         
+        <div id='sec1'>
+            <ul>
+                <li>اصابع فستق <div><button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</label></div></li>
+                <li>اصابع كاجو <div><button onclick="incrment('t2', 's2')">+</button><button onclick="decrment('t2', 's2')">-</button> <label for="t26" id="t2">0</label></div></li>
+                <li>سكاير <div><button onclick="incrment('t3', 's3')">+</button><button onclick="decrment('t3', 's3')">-</button> <label for="t1" id="t3">0</label></div></li>
+                <li>سوار <div><button onclick="incrment('t4', 's4')">+</button><button onclick="decrment('t4', 's4')">-</button><label id="t4">0</label></div></li>
+                <li>بقج <div><button onclick="incrment('t5', 's5')">+</button><button onclick="decrment('t5', 's5')">-</button><label id="t5">0</label></div></li>
+                <li>عش فستق <div><button onclick="incrment('t6', 's6')">+</button> <button onclick="decrment('t6', 's6')">-</button><label id="t6">0</label></div></li>
+                <li>عش مشكل <div><button onclick="incrment('t7', 's7')">+</button> <button onclick="decrment('t7', 's7')">-</button><label  id="t7">0</label></div></li>
+                <li>يبرقة <div><button onclick="incrment('t8', 's8')">+</button> <button onclick="decrment('t8', 's8')">-</button><label  id="t8">0</label></div></li>
+                <li>لسان <div><button onclick="incrment('t9', 's9')">+</button> <button onclick="decrment('t9', 's9')">-</button><label id="t9">0</label></div></li>
+                <li>لقمة <div><button onclick="incrment('t10', 's10')">+</button> <button onclick="decrment('t10', 's10')">-</button><label id="t10">0</label></div></li>
+                <li>لوزينا <div><button onclick="incrment('t11', 's11')">+</button> <button onclick="decrment('t11', 's11')">-</button><label for="t9" id="t11">0</label></div></li>
+                <li>تمرية <div><button onclick="incrment('t12', 's12')">+</button> <button onclick="decrment('t12', 's12')">-</button><label for="t10" id="t12">0</label></div></li>
+                <li>بقلاوة <div><button onclick="incrment('t13', 's13')"> +</button> <button onclick="decrment('t13', 's13')">-</button><label for="t11" id="t13">0</label></div></li>
+                <li>مبرومة <div><button onclick="incrment('t14', 's14')">+</button> <button onclick="decrment('t14', 's14')">-</button><label for="t12" id="t14">0</label></div></li>
+                <li>عصملية <div><button onclick="incrment('t15', 's15')">+</button> <button onclick="decrment('t15', 's15')">-</button><label id="t15">0</label></div></li>
+                <li>بلورية <div><button onclick="incrment('t16', 's16')">+</button> <button onclick="decrment('t16', 's16')">-</button><label id="t16">0</label></div></li>
+                <li>شعبيات قشطة <div><button onclick="incrment('t17', 's17')">+</button> <button onclick="decrment('t17', 's17')">-</button><label id="t17">0</label></div></li>
+                <li>شعبيات جوز <div><button onclick="incrment('t18', 's18')">+</button> <button onclick="decrment('t18', 's18')">-</button><label id="t18">0</label></div></li>
+                <li>هريسة باشا <div><button onclick="incrment('t19', 's19')">+</button> <button onclick="decrment('t19', 's19')">-</button><label id="t19">0</label></div></li>
+                <li>هريسة مكسرات <div><button onclick="incrment('t20', 's20')">+</button> <button onclick="decrment('t20', 's20')">-</button><label id="t20">0</label></div></li>
+                <li>هريسة لوزة <div><button onclick="incrment('t21', 's21')">+</button> <button onclick="decrment('t21', 's21')">-</button><label id="t21">0</label></div></li>
+                <li>هريسة سمسم <div><button onclick="incrment('t22', 's22')">+</button> <button onclick="decrment('t22', 's22')">-</button><label id="t22">0</label></div></li>
+                <li>وربات <div><button onclick="incrment('t23', 's23')">+</button> <button onclick="decrment('t23', 's23')">-</button><label id="t23">0</label></div></li>
+                <li>هريسة جوز <div><button onclick="incrment('t24', 's24')">+</button> <button onclick="decrment('t24', 's24')">-</button><label id="t24">0</label></div></li>
+                <li>هريسة شكولا <div><button onclick="incrment('t25', 's25')">+</button> <button onclick="decrment('t25', 's25')">-</button><label id="t25">0</label></div></li>
+                <li>بقلاوة جوز <div><button onclick="incrment('t26', 's26')">+</button> <button onclick="decrment('t26', 's26')">-</button><label  id="t26">0</label></div></li>
+                <li>كول و شكور <div><button onclick="incrment('t27', 's27')">+</button> <button onclick="decrment('t27', 's27')">-</button><label  id="t27">0</label></div></li>
+                <li>فصليات <div><button onclick="incrment('t28', 's28')">+</button> <button onclick="decrment('t28', 's28')">-</button><label  id="t28">0</label></div></li>
+                <li>ناب الجمل <div><button onclick="incrment('t29', 's29')">+</button> <button onclick="decrment('t29', 's29')">-</button><label  id="t29">0</label></div></li>
+            </ul>
+        </div>
+        <div id='sec2'>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="th1">الصنف</th>
+                        <th class="th2">العدد</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class='th1'>اصابع فستق</td><td id='s1' class='th2'>0</td></tr>
+                    <tr><td class='th1'>اصابع كاجو</td><td id='s2' class='th2'>0</td></tr>
+                    <tr><td class='th1'>سكاير</td><td id='s3' class='th2'>0</td></tr>
+                    <tr><td class='th1'>سوار</td><td id='s4' class='th2'>0</td></tr>
+                    <tr><td class='th1'>بقج</td><td id='s5' class='th2'>0</td></tr>
+                    <tr><td class='th1'>عش فستق</td><td id='s6' class='th2'>0</td></tr>
+                    <tr><td class='th1'>عش مشكل</td><td id='s7' class='th2'>0</td></tr>
+                    <tr><td class='th1'>يبرقة</td><td id='s8' class='th2'>0</td></tr>
+                    <tr><td class='th1'>لسان</td><td id='s9' class='th2'>0</td></tr>
+                    <tr><td class='th1'>لقمة</td><td id='s10' class='th2'>0</td></tr>
+                    <tr><td class='th1'>لوزينا</td><td id='s11' class='th2'>0</td></tr>
+                    <tr><td class='th1'>تمرية</td><td id='s12' class='th2'>0</td></tr>
+                    <tr><td class='th1'>بقلاوة</td><td id='s13' class='th2'>0</td></tr>
+                    <tr><td class='th1'>مبرومة</td><td id='s14' class='th2'>0</td></tr>
+                    <tr><td class='th1'>عصملية</td><td id='s15' class='th2'>0</td></tr>
+                    <tr><td class='th1'>بلورية</td><td id='s16' class='th2'>0</td></tr>
+                    <tr><td class='th1'>شعبيات قشطة</td><td id='s17' class='th2'>0</td></tr>
+                    <tr><td class='th1'>شعبيات جوز</td><td id='s18' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة باشا</td><td id='s19' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة مكسرات</td><td id='s20' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة لوزة</td><td id='s21' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة سمسم</td><td id='s22' class='th2'>0</td></tr>
+                    <tr><td class='th1'>وربات</td><td id='s23' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة جوز</td><td id='s24' class='th2'>0</td></tr>
+                    <tr><td class='th1'>هريسة شكولا</td><td id='s25' class='th2'>0</td></tr>
+                    <tr><td class='th1'>بقلاوة جوز</td><td id='s26' class='th2'>0</td></tr>
+                    <tr><td class='th1'>كول و شكور</td><td id='s27' class='th2'>0</td></tr>
+                    <tr><td class='th1'>فصليات</td><td id='s28' class='th2'>0</td></tr>
+                    <tr><td class='th1'>ناب الجمل</td><td id='s29' class='th2'>0</td></tr>
+                </tbody>
+            </table>
 
-      </footer>
+            <footer>
+                <div>
+                    <p>@copyright[bashar khoujah]</p>
+                    <a href="mailto:basharhas1999@gmail.com">basharhas1999@gmail.com</a>
+                </div>
+                <div>
+                    <a href="https://github.com/bashar0101">https://github.com/bashar0101</a>
+                </div>
+            </footer>
+        </div>
     </div>
     <script>
       const incrment =(id1 , id2)=>{
