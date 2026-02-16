@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التعرف الصوتي - Senyora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #controls {
+            margin: 30px 0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #status {
+            font-size: 22px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #555;
+            min-height: 30px;
+        }
+        #resultTable {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #resultTable th, #resultTable td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 18px;
+        }
+        #resultTable th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #resultTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+        .action-btn {
+            padding: 5px 10px;
+            font-size: 14px;
+            margin: 0 2px;
+            border-radius: 3px;
+        }
+        .btn-inc { background-color: #4CAF50; }
+        .btn-dec { background-color: #FF9800; }
+        .btn-del { background-color: #F44336; }
+    </style>
+</head>
+<body>
+
+    <h1>نظام الجرد الصوتي الذكي 🎙️</h1>
+    
+    <div id="controls">
+        <button onclick="startRecognition()">اضغط للتحدث</button>
+        <div id="status">جاهز...</div>
+    </div>
+
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>اسم المنتج (كما سمعته)</th>
+                <th>العدد</th>
+                <th>إجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data rows go here -->
+        </tbody>
+    </table>
+
+    <a href="index.html" class="back-link">⬅️ العودة للصفحة الرئيسية</a>
+
+    <script>
+        const tableBody = document.querySelector('#resultTable tbody');
+        
+        // Arabic Number System
+        const arabicNumbers = {
+            'واحد': 1, 'واحدة': 1, '١': 1, '1': 1,
+            'اثنين': 2, 'إثنين': 2, '٢': 2, '2': 2,
+            'ثلاثة': 3, 'ثلاث': 3, 'ثلاثه': 3, '٣': 3, '3': 3,
+            'اربعة': 4, 'أربعة': 4, 'أربع': 4, 'اربع': 4, '٤': 4, '4': 4,
+            'خمسة': 5, 'خمس': 5, 'خمسه': 5, '٥': 5, '5': 5,
+            'ستة': 6, 'ست': 6, 'سته': 6, '٦': 6, '6': 6,
+            'سبعة': 7, 'سبع': 7, 'سبعه': 7, '٧': 7, '7': 7,
+            'ثمانية': 8, 'ثمان': 8, 'ثمانيه': 8, '٨': 8, '8': 8,
+            'تسعة': 9, 'تسع': 9, 'تسعه': 9, '٩': 9, '9': 9,
+            'عشرة': 10, 'عشر': 10, 'عشره': 10, '١٠': 10, '10': 10
+        };
+
+        function parseCommand(transcript) {
+            const tokens = transcript.split(/\s+/);
+            let extractedNumber = null;
+            let productWords = [];
+
+            // Iterate through tokens to find the FIRST number
+            for (let i = 0; i < tokens.length; i++) {
+                const token = tokens[i];
+                let val = null;
+
+                if (arabicNumbers[token]) {
+                    val = arabicNumbers[token];
+                } else if (!isNaN(token)) {
+                    val = parseInt(token);
+                }
+
+                if (val !== null && extractedNumber === null) {
+                    extractedNumber = val;
+                } else {
+                    productWords.push(token);
+                }
+            }
+
+            // Join the remaining words as the product name
+            const productName = productWords.join(' ').trim();
+            
+            // Default to 1 if no number found but product exists? 
+            // The prompt says "if user said 5 baklava it extract 5". 
+            // If they just say "baklava", I'll assume count is 1 for now or 0? 
+            // Let's assume 1 if no number is explicitly said.
+            const finalCount = extractedNumber !== null ? extractedNumber : 1;
+
+            return { name: productName, count: finalCount };
+        }
+
+        function updateTable(name, count) {
+            // Check if row exists
+            let rows = tableBody.querySelectorAll('tr');
+            let found = false;
+
+            rows.forEach(row => {
+               const nameCell = row.cells[0];
+               const countCell = row.cells[1];
+               if (nameCell.textContent === name) {
+                   // Update existing
+                   let current = parseInt(countCell.textContent);
+                   countCell.textContent = current + count;
+                   found = true;
+               } 
+            });
+
+            if (!found) {
+                // Create new
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${name}</td>
+                    <td>${count}</td>
+                    <td>
+                        <button class="action-btn btn-inc" onclick="modifyCount(this, 1)">+</button>
+                        <button class="action-btn btn-dec" onclick="modifyCount(this, -1)">-</button>
+                        <button class="action-btn btn-del" onclick="deleteRow(this)">🗑️</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+
+        function modifyCount(btn, change) {
+            const row = btn.closest('tr');
+            const countCell = row.cells[1];
+            let current = parseInt(countCell.textContent);
+            let newVal = current + change;
+            if (newVal < 0) newVal = 0;
+            countCell.textContent = newVal;
+        }
+
+        function deleteRow(btn) {
+            const row = btn.closest('tr');
+            row.remove();
+        }
+
+        function startRecognition() {
+            const statusEl = document.getElementById('status');
+            
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert("المتصفح غير مدعوم. يرجى استخدام Chrome.");
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'ar-SA';
+            recognition.interimResults = false;
+            recognition.continuous = false;
+
+            recognition.onstart = () => {
+                statusEl.textContent = "جاري الاستماع... تكلم الآن 🎤";
+                statusEl.style.color = "green";
+            };
+
+            recognition.onend = () => {
+                statusEl.textContent = "جاهز...";
+                statusEl.style.color = "#555";
+            };
+
+            recognition.onerror = (e) => {
+                statusEl.textContent = "خطأ: " + e.error;
+                statusEl.style.color = "red";
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                console.log("Heard:", transcript);
+                
+                const result = parseCommand(transcript);
+                
+                if (result.name) {
+                    updateTable(result.name, result.count);
+                    statusEl.textContent = `تم إضافة: ${result.count} ${result.name} ✅`;
+                } else {
+                    statusEl.textContent = "لم يتم التعرف على اسم المنتج ❌";
+                }
+            };
+
+            recognition.start();
+        }
+    </script>
+</body>
+</html>

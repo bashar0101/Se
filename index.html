@@ -46,10 +46,31 @@
       ul{
         text-align: left;
       }
+      ul{
+        text-align: left;
+      }
+      .voice-link {
+        display: block;
+        text-align: center;
+        margin: 20px;
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        background-color: #2196F3;
+        padding: 10px;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+      }
+      .voice-link:hover {
+        background-color: #0b7dda;
+      }
     </style>
   </head>
   <body>
  <h1 style="margin-left: 150px;">الجرد</h1>
+    <a href="voice_recognition.html" class="voice-link">🎙️ الانتقال للجرد الصوتي</a>
     <div id = 'sec1'>
       <ul>
         <li>اصابع فستق<button onclick="incrment('t1','s1') ">+</button><button onclick="decrment('t1','s1')">-</button> <label for="t25" id="t1">0</li>
@@ -272,6 +293,7 @@
           <th id = 's29' class = 'th2'>0</th>
         </tr>
       </table>
+
       <footer>
         <div>
           <p style="font-size: 8px; margin-left: 40px; margin-top: 80px;">@copyright[bashar khoujah]</p>
@@ -288,7 +310,7 @@
       const incrment =(id1 , id2)=>{
         a = document.getElementById(id1)
         b = document.getElementById(id2)
-        var number = a.innerHTML;
+        var number = parseFloat(a.innerHTML) || 0; // Ensure number
         number++;
         a.innerHTML= number;
         b.innerHTML = number;
@@ -296,11 +318,11 @@
       const decrment =(id1 ,id2)=>{
         a = document.getElementById(id1)
         b = document.getElementById(id2)
-        var number = a.innerHTML;
+        var number = parseFloat(a.innerHTML) || 0;
         number--;
         a.innerHTML= number;
         b.innerHTML = number;
       };
     </script>
-</body> 
+  </body>
 </html>
